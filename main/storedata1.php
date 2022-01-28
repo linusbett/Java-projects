@@ -15,6 +15,7 @@ $courttype = $_POST['courttype'];
 $casetype = $_POST['casetype'];
 $category = $_POST['category'];
 $caseno = $_POST['caseno'];
+$parties = $_POST['parties'];
 $registry = $_POST['registry'];
 $officers = $_POST['officers'];
 $daterecieved = $_POST['daterecieved'];
@@ -27,11 +28,11 @@ $remarks = $_POST['remarks'];
 // Selecting Database
 $db_select = mysqli_select_db($conn, DB_NAME) or die(mysqli_error()); //selecting database
 
-if (isset($_POST['empname'])) {
+if (isset($_POST['regForm'])) {
 
 //Insert Query
-$insert= "insert into fileregistration(emp_id, emp_name , email, phone, address, username, password) 
-values ('','$name', '$email', '$phn', '$address','$uname', '$password')"; 
+$insert= "insert into fileregistration(court, casetype, category, caseno, parties, registry, officers, dateRecieved,finalOrder, dateOfFinal, period,disposalDate, remarks) 
+values ('','$courtype', '$casetype', '$category', '$caseno','$parties', '$registry', '$officers', '$daterecieved', '$finalorder', '$dateoffinal', '$retention', '$dateofdisposal', '$remarks')"; 
 
 if($conn->query($insert)){
  echo 'Data inserted successfully';
@@ -39,9 +40,6 @@ if($conn->query($insert)){
 else{
  echo 'Error '.$conn->error;  
 }
-
-mysql_close($connection); // Connection Closed
-?>
-<?php
-
+mysql_close($conn); // Connection Closed
+}
 ?>

@@ -181,7 +181,7 @@ input.invalid {
 <h2>Register File:</h2>
 </div>
 <div id="pagecontent">
-<form id="regForm" action=""method="POST">
+<form id="regForm" action="storedata1.php"method="POST">
 
 <!-- One "tab" for each step in the form: -->
 <div class="selectDiv">
@@ -228,6 +228,9 @@ input.invalid {
 
 <div class="selectDiv">
 <div class="tab">Step 2:</br>
+<label>Parties:</label><br>
+  <textarea placeholder="Enter the parties"class="form-control"name="parties"id="parties"></textarea>
+  <br>
       <label for="">Creating Registry</label></br>
      <select name="registry" class="form-control" id="registry">
     <option value="category">CMCC-Criminal Case</option>
@@ -341,84 +344,7 @@ function nextPrev(n) {
   if (currentTab >= x.length) {
     // ... the form gets submitted:
     document.getElementById("regForm").submit();
-    function formsubmit() {
-    var courttpe = document.getElementById('courttype').value;
-    var casetype = document.getElementById('casetype').value;
-    var category = document.getElementById('category').value;
-    var caseno = document.getElementById('caseno').value;
-    var registry = document.getElementById('registry').value;
-    var officers = document.getElementById('officers').value;
-    var daterecieved = document.getElementById('daterecieved').value;
-    var finalorder = document.getElementById('finalorder').value;
-    var dateoffinal = document.getElementById('dateoffinal').value;
-    var retention = document.getElementById('retention').value;
-    var dateofdisposal = document.getElementById('dateofdisposal').value;
-    var remarks = document.getElementById('remarks').value;
-    //store all the submitted data in astring.
-    var formdata = 'courttype=' + courttype + '&casetype=' + casetype + '&category=' + category + '&caseno=' + caseno +'&registry=' + registry+ '&officers=' + officers + '&daterecieved=' + daterecieved +'&finalorder=' + finalorder + '&dateoffinal=' + dateoffinal + '&retention=' + retention+ '&dateofdisposal=' + dateofdisposal+ '&remarks=' + remarks;
-	// validate the form input
-	if (courttype == '' ) {
-		alert("Please select court type");
-		return false;
-	}
-	if(casetype == '') {
-		alert("Please select case type");
-		return false;
-	}
-	if(category == '') {
-		alert("Please select category");
-		return false;
-	}
-	if(caseno == '') {
-		alert("Please enter caseno");
-		return false;
-	}
-  if(registry == '') {
-		alert("Please select Creating registry");
-		return false;
-	}
-  if(officers == '') {
-		alert("Please select recieving officers");
-		return false;
-	}
-  if(daterecieved == '') {
-		alert("Please enter date recieved");
-		return false;
-	}
-  if(finalorder == '') {
-		alert("Please enter final orders");
-		return false;
-	}
-  if(dateoffinal == '') {
-		alert("enter date of final order");
-		return false;
-	}
-  if(retention == '') {
-		alert("Please enter retention period");
-		return false;
-	}
-  if(dateofdisposal == '') {
-		alert("Please enter date of disposal");
-		return false;
-	}
-  if(remarks == '') {
-		alert("Please enter the remarks");
-		return false;
-	}
-	else {
-	// AJAX code to submit form.
-	$.ajax({
-		 type: "POST",
-		 url: "storedata.php", //call storedata.php to store form data
-		 data: formdata,
-		 cache: false,
-		 success: function(html) {
-		  alert(html);
-		 }
-	});
-	}
-	return false;
-}
+    return TRUE;
   }
   // Otherwise, display the correct tab:
   showTab(currentTab);
